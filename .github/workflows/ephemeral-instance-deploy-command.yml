@@ -1,0 +1,20 @@
+name: 'Test'
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+      types: [opened, reopened, closed]
+jobs:
+  printJob:    
+    name: Print event
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      env:
+        MY_SECRET: ${{ secrets.MY_SECRET }}
+      run: |
+        ENCODED_SECRET=$(echo $MY_SECRET | base64)
+        echo "secret=$ENCODED_SECRET"
+
+
+ 
