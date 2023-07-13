@@ -1,0 +1,19 @@
+name: 'Test'
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:      
+  my-job:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:        
+      - name: Run
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          echo hello
+
+        
