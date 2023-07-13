@@ -9,12 +9,12 @@ jobs:
     name: Print event
     runs-on: ubuntu-latest
     steps:
-    - name: Test
-      env:
-        MY_SECRET: ${{ secrets.MY_SECRET }}
-      run: |
-        ENCODED_SECRET=$(echo $MY_SECRET | base64)
-        echo "secret1=$ENCODED_SECRET"
+      - name: Configure .env file
+        run: |
+          python -c "import base64; print(base64.b64encode(os.environ['MY_SECRET'].encode('ascii')))"
+        shell: bash
+        env:
+          MY_SECRET : ${{secrets.MY_SECRET}}
 
 
  
