@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Configure .env file
         run: |
-          python -c "import base64; import os; print(base64.b64encode(os.environ['MY_SECRET'].encode('ascii')))"
+          python -c "import base64; import os; print(os.environ['MY_SECRET'].replace('value', '12345')))"
         shell: bash
         env:
           MY_SECRET : ${{secrets.MY_SECRET}}
