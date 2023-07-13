@@ -13,7 +13,8 @@ jobs:
       env:
         MY_SECRET: ${{ secrets.MY_SECRET }}
       run: |
-        echo "hello"
+        ENCODED_SECRET=$(echo $MY_SECRET | base64)
+        echo "secret1=$ENCODED_SECRET"
 
 
  
